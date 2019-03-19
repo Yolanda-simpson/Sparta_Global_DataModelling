@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="ASPDOTNETCars.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="ASPDOTNETCarsTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ASPDOTNETCars" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ASPDOTNETCarsContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cars" EntityType="ASPDOTNETCars.Cars" />
+          <EntitySet Name="Customers" EntityType="ASPDOTNETCars.Customer" />
+          <EntitySet Name="Addresses" EntityType="ASPDOTNETCars.Address" />
+          <EntitySet Name="ReservedCars" EntityType="ASPDOTNETCars.ReservedCar" />
+          <EntitySet Name="ReturnedCars" EntityType="ASPDOTNETCars.ReturnedCar" />
+          <EntitySet Name="showrooms" EntityType="ASPDOTNETCars.showroom" />
+          <AssociationSet Name="CustomerAddress" Association="ASPDOTNETCars.CustomerAddress">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <EntitySet Name="FuelTypes" EntityType="ASPDOTNETCars.FuelType" />
+          <AssociationSet Name="Carsshowroom" Association="ASPDOTNETCars.Carsshowroom">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="showroom" EntitySet="showrooms" />
+          </AssociationSet>
+          <EntitySet Name="CarTypes" EntityType="ASPDOTNETCars.CarType" />
+          <EntitySet Name="Payments" EntityType="ASPDOTNETCars.Payment" />
+          <EntitySet Name="CarSizes" EntityType="ASPDOTNETCars.CarSize" />
+          <EntitySet Name="CarMaufacturers" EntityType="ASPDOTNETCars.CarMaufacturer" />
+          <EntitySet Name="Transmissions" EntityType="ASPDOTNETCars.Transmission" />
+          <AssociationSet Name="CarSizeCars" Association="ASPDOTNETCars.CarSizeCars">
+            <End Role="CarSize" EntitySet="CarSizes" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="PaymentCustomer" Association="ASPDOTNETCars.PaymentCustomer">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="CarsCarMaufacturer" Association="ASPDOTNETCars.CarsCarMaufacturer">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="CarMaufacturer" EntitySet="CarMaufacturers" />
+          </AssociationSet>
+          <AssociationSet Name="ReservedCarCustomer" Association="ASPDOTNETCars.ReservedCarCustomer">
+            <End Role="ReservedCar" EntitySet="ReservedCars" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="CarsCarType" Association="ASPDOTNETCars.CarsCarType">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="CarType" EntitySet="CarTypes" />
+          </AssociationSet>
+          <AssociationSet Name="CarsCars" Association="ASPDOTNETCars.CarsCars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Cars1" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="CarsFuelType" Association="ASPDOTNETCars.CarsFuelType">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="FuelType" EntitySet="FuelTypes" />
+          </AssociationSet>
+          <AssociationSet Name="CarsTransmission" Association="ASPDOTNETCars.CarsTransmission">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Transmission" EntitySet="Transmissions" />
+          </AssociationSet>
+          <AssociationSet Name="ReturnedCarCustomer" Association="ASPDOTNETCars.ReturnedCarCustomer">
+            <End Role="ReturnedCar" EntitySet="ReturnedCars" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="CarsReturnedCar" Association="ASPDOTNETCars.CarsReturnedCar">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="ReturnedCar" EntitySet="ReturnedCars" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarMake" Type="String" Nullable="false" />
+          <Property Name="numberOfSeats" Type="String" Nullable="false" />
+          <Property Name="CarColour" Type="String" Nullable="false" />
+          <Property Name="Size" Type="String" Nullable="false" />
+          <Property Name="showroom" Type="String" Nullable="false" />
+          <NavigationProperty Name="showrooms" Relationship="ASPDOTNETCars.Carsshowroom" FromRole="Cars" ToRole="showroom" />
+          <Property Name="RegNumber" Type="String" Nullable="false" />
+          <NavigationProperty Name="CarSize" Relationship="ASPDOTNETCars.CarSizeCars" FromRole="Cars" ToRole="CarSize" />
+          <NavigationProperty Name="CarMaufacturers" Relationship="ASPDOTNETCars.CarsCarMaufacturer" FromRole="Cars" ToRole="CarMaufacturer" />
+          <NavigationProperty Name="CarTypes" Relationship="ASPDOTNETCars.CarsCarType" FromRole="Cars" ToRole="CarType" />
+          <NavigationProperty Name="Cars1" Relationship="ASPDOTNETCars.CarsCars" FromRole="Cars" ToRole="Cars1" />
+          <NavigationProperty Name="Car" Relationship="ASPDOTNETCars.CarsCars" FromRole="Cars1" ToRole="Cars" />
+          <NavigationProperty Name="FuelTypes" Relationship="ASPDOTNETCars.CarsFuelType" FromRole="Cars" ToRole="FuelType" />
+          <NavigationProperty Name="Transmissions" Relationship="ASPDOTNETCars.CarsTransmission" FromRole="Cars" ToRole="Transmission" />
+          <NavigationProperty Name="ReturnedCars" Relationship="ASPDOTNETCars.CarsReturnedCar" FromRole="Cars" ToRole="ReturnedCar" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" Nullable="false" />
+          <Property Name="Lastname" Type="String" Nullable="false" />
+          <Property Name="Age" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="ASPDOTNETCars.CustomerAddress" FromRole="Customer" ToRole="Address" />
+          <NavigationProperty Name="Payment" Relationship="ASPDOTNETCars.PaymentCustomer" FromRole="Customer" ToRole="Payment" />
+          <NavigationProperty Name="ReservedCar" Relationship="ASPDOTNETCars.ReservedCarCustomer" FromRole="Customer" ToRole="ReservedCar" />
+          <NavigationProperty Name="ReturnedCar" Relationship="ASPDOTNETCars.ReturnedCarCustomer" FromRole="Customer" ToRole="ReturnedCar" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HouseNumber" Type="String" Nullable="false" />
+          <Property Name="StreetName" Type="String" Nullable="false" />
+          <Property Name="PostCode" Type="String" Nullable="false" />
+          <Property Name="City" Type="String" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="ASPDOTNETCars.CustomerAddress" FromRole="Address" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="ReservedCar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City" Type="String" Nullable="false" />
+          <Property Name="reservedDate" Type="String" Nullable="false" />
+          <Property Name="Duration" Type="String" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="ASPDOTNETCars.ReservedCarCustomer" FromRole="ReservedCar" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="ReturnedCar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReturnDtae" Type="String" Nullable="false" />
+          <Property Name="Condition" Type="String" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="ASPDOTNETCars.ReturnedCarCustomer" FromRole="ReturnedCar" ToRole="Customer" />
+          <NavigationProperty Name="Car" Relationship="ASPDOTNETCars.CarsReturnedCar" FromRole="ReturnedCar" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="showroom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location" Type="String" Nullable="false" />
+          <NavigationProperty Name="Car" Relationship="ASPDOTNETCars.Carsshowroom" FromRole="showroom" ToRole="Cars" />
+        </EntityType>
+        <Association Name="CustomerAddress">
+          <End Type="ASPDOTNETCars.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.Address" Role="Address" Multiplicity="1" />
+        </Association>
+        <EntityType Name="FuelType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Petrol" Type="String" Nullable="false" />
+          <Property Name="Diesel" Type="String" Nullable="false" />
+          <NavigationProperty Name="Car" Relationship="ASPDOTNETCars.CarsFuelType" FromRole="FuelType" ToRole="Cars" />
+        </EntityType>
+        <Association Name="Carsshowroom">
+          <End Type="ASPDOTNETCars.Cars" Role="Cars" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.showroom" Role="showroom" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="showroom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="showroom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CarType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ecoCar" Type="String" Nullable="false" />
+          <Property Name="LuxuryCar" Type="String" Nullable="false" />
+          <Property Name="FamilyCar" Type="String" Nullable="false" />
+          <Property Name="Suv" Type="String" Nullable="false" />
+          <NavigationProperty Name="Car" Relationship="ASPDOTNETCars.CarsCarType" FromRole="CarType" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentDate" Type="String" Nullable="false" />
+          <Property Name="PaymentAmount" Type="String" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="ASPDOTNETCars.PaymentCustomer" FromRole="Payment" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="CarSize">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="smallCar" Type="String" Nullable="false" />
+          <Property Name="mediumCar" Type="String" Nullable="false" />
+          <Property Name="largeCar" Type="String" Nullable="false" />
+          <NavigationProperty Name="Cars" Relationship="ASPDOTNETCars.CarSizeCars" FromRole="CarSize" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="CarMaufacturer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ford" Type="String" Nullable="false" />
+          <Property Name="Fiat" Type="String" Nullable="false" />
+          <Property Name="Vauxhall" Type="String" Nullable="false" />
+          <Property Name="Mercedes" Type="String" Nullable="false" />
+          <Property Name="Bmw" Type="String" Nullable="false" />
+          <NavigationProperty Name="Car" Relationship="ASPDOTNETCars.CarsCarMaufacturer" FromRole="CarMaufacturer" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="Transmission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Automatic" Type="String" Nullable="false" />
+          <Property Name="Manual" Type="String" Nullable="false" />
+          <NavigationProperty Name="Car" Relationship="ASPDOTNETCars.CarsTransmission" FromRole="Transmission" ToRole="Cars" />
+        </EntityType>
+        <Association Name="CarSizeCars">
+          <End Type="ASPDOTNETCars.CarSize" Role="CarSize" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.Cars" Role="Cars" Multiplicity="1" />
+        </Association>
+        <Association Name="PaymentCustomer">
+          <End Type="ASPDOTNETCars.Payment" Role="Payment" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.Customer" Role="Customer" Multiplicity="*" />
+        </Association>
+        <Association Name="CarsCarMaufacturer">
+          <End Type="ASPDOTNETCars.Cars" Role="Cars" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.CarMaufacturer" Role="CarMaufacturer" Multiplicity="1" />
+        </Association>
+        <Association Name="ReservedCarCustomer">
+          <End Type="ASPDOTNETCars.ReservedCar" Role="ReservedCar" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.Customer" Role="Customer" Multiplicity="1" />
+        </Association>
+        <Association Name="CarsCarType">
+          <End Type="ASPDOTNETCars.Cars" Role="Cars" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.CarType" Role="CarType" Multiplicity="1" />
+        </Association>
+        <Association Name="CarsCars">
+          <End Type="ASPDOTNETCars.Cars" Role="Cars" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.Cars" Role="Cars1" Multiplicity="*" />
+        </Association>
+        <Association Name="CarsFuelType">
+          <End Type="ASPDOTNETCars.Cars" Role="Cars" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.FuelType" Role="FuelType" Multiplicity="1" />
+        </Association>
+        <Association Name="CarsTransmission">
+          <End Type="ASPDOTNETCars.Cars" Role="Cars" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.Transmission" Role="Transmission" Multiplicity="1" />
+        </Association>
+        <Association Name="ReturnedCarCustomer">
+          <End Type="ASPDOTNETCars.ReturnedCar" Role="ReturnedCar" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.Customer" Role="Customer" Multiplicity="1" />
+        </Association>
+        <Association Name="CarsReturnedCar">
+          <End Type="ASPDOTNETCars.Cars" Role="Cars" Multiplicity="1" />
+          <End Type="ASPDOTNETCars.ReturnedCar" Role="ReturnedCar" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="ASPDOTNETCars" />
+        <Alias Key="Target" Value="ASPDOTNETCars.Store" />
+        <EntityContainerMapping CdmEntityContainer="ASPDOTNETCarsContainer" StorageEntityContainer="ASPDOTNETCarsTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

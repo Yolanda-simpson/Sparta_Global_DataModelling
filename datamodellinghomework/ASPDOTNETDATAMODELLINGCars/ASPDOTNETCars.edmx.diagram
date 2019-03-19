@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="34fd2f1bc7ce4d70a38a32c07c142184" Name="Diagram1" ZoomLevel="97" >
+        <EntityTypeShape EntityType="ASPDOTNETCars.Cars" Width="1.5" PointX="9.625" PointY="0.75" />
+        <EntityTypeShape EntityType="ASPDOTNETCars.Customer" Width="1.5" PointX="1.125" PointY="3.375" />
+        <EntityTypeShape EntityType="ASPDOTNETCars.Address" Width="1.5" PointX="3.125" PointY="6.375" />
+        <EntityTypeShape EntityType="ASPDOTNETCars.ReservedCar" Width="1.5" PointX="5.625" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASPDOTNETCars.ReturnedCar" Width="1.5" PointX="8.5" PointY="6.75" />
+        <EntityTypeShape EntityType="ASPDOTNETCars.showroom" Width="1.5" PointX="6.625" PointY="0.5" />
+        <AssociationConnector Association="ASPDOTNETCars.CustomerAddress" />
+        <EntityTypeShape EntityType="ASPDOTNETCars.FuelType" Width="1.5" PointX="12" PointY="3" />
+        <AssociationConnector Association="ASPDOTNETCars.Carsshowroom" />
+        <EntityTypeShape EntityType="ASPDOTNETCars.CarType" Width="1.5" PointX="4.25" PointY="1.75" />
+        <EntityTypeShape EntityType="ASPDOTNETCars.Payment" Width="1.5" PointX="1.875" PointY="0.875" />
+        <EntityTypeShape EntityType="ASPDOTNETCars.CarSize" Width="1.5" PointX="7.875" PointY="4.625" />
+        <EntityTypeShape EntityType="ASPDOTNETCars.CarMaufacturer" Width="1.5" PointX="6" PointY="2.875" />
+        <EntityTypeShape EntityType="ASPDOTNETCars.Transmission" Width="1.5" PointX="11.375" PointY="5.25" />
+        <AssociationConnector Association="ASPDOTNETCars.CarSizeCars" />
+        <AssociationConnector Association="ASPDOTNETCars.PaymentCustomer" />
+        <AssociationConnector Association="ASPDOTNETCars.CarsCarMaufacturer" />
+        <AssociationConnector Association="ASPDOTNETCars.ReservedCarCustomer" />
+        <AssociationConnector Association="ASPDOTNETCars.CarsCarType" />
+        <AssociationConnector Association="ASPDOTNETCars.CarsCars" />
+        <AssociationConnector Association="ASPDOTNETCars.CarsFuelType" />
+        <AssociationConnector Association="ASPDOTNETCars.CarsTransmission" />
+        <AssociationConnector Association="ASPDOTNETCars.ReturnedCarCustomer" />
+        <AssociationConnector Association="ASPDOTNETCars.CarsReturnedCar" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
